@@ -1,0 +1,302 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var restaurantInfo = @System.Configuration.ConfigurationManager.AppSettings["restaurantInfo"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/NewCSS/ReservationIndex.css" rel="stylesheet" type="text/css" />
+    <title></title>
+</head>
+<body>
+    <div class="body-container">
+        <div class="central-container circle-spinner-container invisible" data-bind="visible: $root.showLoader()">
+            <div class="spincircle">
+                <ul class="circles">
+                    <li>
+                        <div class="circle circle--1"></div>
+                    </li>
+                    <li>
+                        <div class="circle circle--2"></div>
+                    </li>
+                    <li>
+                        <div class="circle circle--3"></div>
+                    </li>
+                    <li>
+                        <div class="circle circle--4"></div>
+                    </li>
+                    <li>
+                        <div class="circle circle--5"></div>
+                    </li>
+                    <li>
+                        <div class="circle circle--6"></div>
+                    </li>
+                    <li>
+                        <div class="circle circle--7"></div>
+                    </li>
+                    <li>
+                        <div class="circle circle--8"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="central-container reservation-container invisible" data-bind="visible: $root.showInputScreen() && !$root.showLoader()">
+            <fieldset style="width:100%" class="reservation-row-container">
+                <div style="width:100%" class="reservation-row">
+                    <div class="reservation-row-empty-container"></div>
+                    <div class="reservation-row-input-container">
+                        <input style="width:100%" class="reservation-row-input" id="paxes" type="text" placeholder="@Languages.Resources.NoOfPaxes" data-bind="value: $root.paxes, clickBubble: false, css: { 'error-input' : !$root.paxes.isValid() && $root.getPending() }">
+                    </div>
+                    <div class="reservation-row-error-container">
+                        <span class="reservation-row-error error-message" data-bind="visible: !$root.paxes.isValid() && $root.getPending()">@Languages.Resources.PaxesRequired</span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%" class="reservation-row-container">
+                <div style="width:100%" class="reservation-row">
+                    <div class="reservation-row-empty-container"></div>
+                    <div class="reservation-row-input-container">
+                        <input style="width:100%" class="reservation-row-input" id="name" type="text" placeholder="@Languages.Resources.Name" data-bind="value: $root.name, clickBubble: false, css: { 'error-input' : !$root.name.isValid() && $root.getPending() }">
+                    </div>
+                    <div class="reservation-row-error-container">
+                        <span style="width:100%" class="reservation-row-error error-message" data-bind="visible: !$root.name.isValid() && $root.getPending()">@Languages.Resources.NameRequired</span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%" class="reservation-row-container">
+                <div style="width:100%" class="reservation-row">
+                    <div class="reservation-row-empty-container"></div>
+                    <div class="reservation-row-input-container">
+                        <input style="width:100%" class="reservation-row-input" id="room" type="text" placeholder="@Languages.Resources.Room" data-bind="value: $root.room, clickBubble: false, css: { 'error-input' : !$root.room.isValid() && $root.getPending(), 'reservation-row-input-disabled' : $root.hasPredefinedValues() }, attr: { 'disabled' :  $root.hasPredefinedValues() }">
+                    </div>
+                    <div class="reservation-row-error-container">
+                        <span style="width:100%" class="reservation-row-error error-message" data-bind="visible: !$root.room.isValid() && $root.getPending()">@Languages.Resources.RoomRequired</span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%" class="reservation-button-row-container">
+                <div style="width:100%" class="reservation-button-row">
+                    <div class="reservation-button-container">
+                        <button style="width:100%" class="reservation-button resrevation-button-text reservation-button-previous" type="button" data-bind="click: $root.backToLanguageSelection">@Languages.Resources.Cancel</button>
+                    </div>
+                    <div class="reservation-button-container">
+                        <button style="width:100%" class="reservation-button resrevation-button-text reservation-button-next" type="button" data-bind="click: $root.getCustomerInfo">@Languages.Resources.Next</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="central-container extra-reservation-container invisible" data-bind="visible: $root.showAnotherRoomScreen() && !$root.showLoader()">
+            <fieldset class="extra-reservation-row-container scrollbar-style" data-bind="foreach: $root.extraRooms()">
+                <div class="extra-reservation-row">
+                    <div class="extra-reservation-row-empty-container"></div>
+                    <div class="extra-reservation-row-input-container">
+                        <input class="extra-reservation-row-input" id="paxes" type="text" placeholder="Room" data-bind="value: room, clickBubble: false, attr: { id: 'extraRoom_' + $index() }">
+                    </div>
+                    <div class="extra-reservation-row-delete-container">
+                        <img src="~/Content/Images/MaterialIcons/baseline_delete_forever_black_18dp.png" alt="Delete" class="extra-reservation-row-delete" data-bind="click: $root.deleteRoom">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="reservation-button-row-container">
+                <div class="reservation-button-row">
+                    <div class="reservation-button-container">
+                        <button class="reservation-button resrevation-button-text reservation-button-previous" type="button" data-bind="click: $root.backToInputs">@Languages.Resources.Back</button>
+                    </div>
+                    <div class="reservation-button-container">
+                        <button class="reservation-button resrevation-button-text reservation-button-next" type="button" data-bind="click: $root.getRoomInfo.bind($parents[0])">@Languages.Resources.Next</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="central-container restaurant-reservation-container invisible" data-bind="with: dateOnScreen, visible: $root.showRestaurantChoice()">
+            <fieldset style="width:100%" class="restaurant-date-reservation-row-container">
+                <div style="width:100%" class="restaurant-date-reservation-row">
+                    <div class="restaurant-date-reservation-row-arrow">
+                        <div class="restaurant-date-previous-day" data-bind="click: $root.previousDay"><i class="far fa-arrow-alt-circle-left"></i></div>
+                    </div>
+                    <div class="restaurant-date-reservation-row-date">
+                        <span style="width:100%; text-align:center" class="restaurant-date-date" data-bind="text: moment(AvailDate).format('DD/MM/YYYY')"></span>
+                    </div>
+                    <div class="restaurant-date-reservation-row-arrow">
+                        <div class="restaurant-date-next-day" data-bind="click: $root.nextDay"><i class="far fa-arrow-alt-circle-right"></i></div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%;overflow-y: auto;display:block" class="restaurant-restaurants-reservation-row-container scrollbar-style" data-bind="foreach: Info">
+                <div style="width:100%;display:block" class="restaurant-restaurants-reservation-row">
+                    <div class="restaurant-restaurants-reservation-row-restaurant">
+                        <span data-bind="text: RestaurantName"></span>
+                    </div>
+                    <div style="width:100%" class="restaurant-restaurants-reservation-row-dates">
+                        <div class="restaurant-restaurants-reservation-row-date" data-bind="foreach: Infoo">
+                            <span style="width:100%;display:block" class="restaurant-date" data-bind="text: TypeText, click: $root.chooseDate.bind($data), attr: { id: 'brunch' + $data.RestId + $data.Type}, visible: Type == 0"></span>
+                        </div>
+                        <div class="restaurant-restaurants-reservation-row-date" data-bind="foreach: Infoo">
+                            <span style="width:100%;display:block" class="restaurant-date" data-bind="text: TypeText, click: $root.chooseDate.bind($data), attr: { id: 'lunch' +  $data.RestId + $data.Type}, visible: Type == 1"></span>
+                        </div>
+                        <div class="restaurant-restaurants-reservation-row-date" data-bind="foreach: Infoo">
+                            <span style="width:100%;display:block" class="restaurant-date" data-bind="text: TypeText, click: $root.chooseDate.bind($data), attr: { id: 'dinner' + $data.RestId + $data.Type}, visible: Type == 2"></span>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%" class="reservation-button-row-container">
+                <div style="width:100%" class="reservation-button-row">
+                    <div class="reservation-button-container">
+                        <button style="width:100%" class="reservation-button resrevation-button-text reservation-button-previous" type="button" data-bind="click: $root.backToInputs">@Languages.Resources.Back</button>
+                    </div>
+                    <div class="reservation-button-container">
+                        <button style="width:100%" class="reservation-button resrevation-button-text reservation-button-next" type="button" data-bind="click: $root.openModalInfo, enable: $root.lockSave()">@Languages.Resources.Next</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div style="width:100%;overflow-y: auto;display:block" class="central-container time-reservation-container invisible" data-bind="visible: $root.showTimeChoice()">
+            <fieldset style="width:100%;display:block;text-align:center" class="time-restaurant-reservation-row-container">
+                <div class="time-restaurant-reservation-row">
+                    <span class="time-restaurant" data-bind="text: $root.mealTypeText"></span>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%;display:block" class="time-hour-reservation-row-container">
+                <div class="time-hour-reservation-row scrollbar-style" data-bind="foreach: $root.availableTimes">
+                    <div class="time-hour-container">
+                        <span class="time-hour" data-bind="text: Time, click: $root.chooseTime, attr: { id: 'time' + $index() }"></span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%;display:block" class="reservation-button-row-container">
+                <div style="width:100%" class="reservation-button-row">
+                    <div class="reservation-button-container">
+                        <button class="reservation-button resrevation-button-text reservation-button-previous" type="button" data-bind="click: $root.backToTypeSelect">@Languages.Resources.Back</button>
+                    </div>
+                    <div class="reservation-button-container">
+                        <button class="reservation-button resrevation-button-text reservation-button-next" type="button" data-bind="click: $root.goToCompleteScreen">@Languages.Resources.Next</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div style="width:100%;overflow-y: auto;display:block" class="central-container complete-reservation-container invisible" data-bind="visible: $root.showCompleteScreen()">
+            <fieldset style="width:100%;display:block;" class="complete-information-reservation-row-container">
+                <div style="width:100%;display:block;" class="complete-information-container">
+                    <div style="width:100%;display:block;text-align:center" class="complete-information-date-container" data-bind="with: selectedDate">
+                        <span class="complete-information-date" data-bind="text: moment($data).format('DD/MM/YYYY')"></span>
+                    </div>
+                    <div style="width:100%" class="complete-information-reservation-container">
+                        <div class="complete-information-reservation-information-container">
+                            <div class="complete-information-reservation-information" data-bind="with: selectedRestaurant">
+                                <span class="complete-information-restaurant" data-bind="text: $data"></span>
+                            </div>
+                            <div class="complete-information-reservation-information" data-bind="with: mealTypeText">
+                                <span class="complete-information-type" data-bind="text: $data"></span>
+                            </div>
+                            <div class="complete-information-reservation-information"  id="descID">
+                                <input class="complete-information-type" data-bind="text: $data" id="inputDescription" placeholder="description">
+                            </div>
+                            <div class="complete-information-reservation-information" data-bind="with: chosenTime">
+                                <span class="complete-information-time" data-bind="text: $data"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="width:100%;display:block" class="complete-actions-reservation-row-container">
+                <div class="complete-button-row">
+                    <div class="complete-button-container">
+                        <button class="complete-button complete-button-text complete-button-previous" type="button" data-bind="click: $root.backToTimeSelect">@Languages.Resources.Back</button>
+                    </div>
+                    <div class="complete-button-container">
+                        <button class="complete-button complete-button-text complete-button-next" type="button" data-bind="click: $root.goToCompleteMessage.bind($data, false, false), enable: $root.lockSave()">@Languages.Resources.Finalize</button>
+                    </div>
+                    <div class="complete-button-container" data-bind="visible: $root.completeOption() == completeOptionsEnum.All || $root.completeOption() == completeOptionsEnum.Extecr || $root.completeOption() == completeOptionsEnum.Email">
+                        <button class="complete-button complete-button-text-email complete-button-next" type="button" data-bind="click: $root.goToCompleteMessage.bind($data, true, false), enable: $root.lockSave(), visible: ($root.completeOption() == completeOptionsEnum.All || $root.completeOption() == completeOptionsEnum.Email) && $root.emailFound()">@Languages.Resources.SendEmail</button>
+                    </div>
+                    <div class="complete-button-container" data-bind="visible: $root.completeOption() == completeOptionsEnum.All || $root.completeOption() == completeOptionsEnum.Extecr || $root.completeOption() == completeOptionsEnum.Email">
+                        <button class="complete-button complete-button-text-print complete-button-next" type="button" data-bind="click: $root.goToCompleteMessage.bind($data, false, true), enable: $root.lockSave(), visible: ($root.completeOption() == completeOptionsEnum.All || $root.completeOption() == completeOptionsEnum.Extecr)">@Languages.Resources.Print</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="central-container message-reservation-container invisible" data-bind="visible: $root.showCompleteMessage()">
+            <div class="message-reservation">
+                <span class="message-reservation-text">@Languages.Resources.CompleteMessage</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@section scripts{
+    <script src="~/Models/Reservation_vm.js"></script>
+    <script type="text/javascript">
+        var vm = new Reservation_vm();
+        vm.showLoader(true);
+        ko.applyBindings(vm);
+        vm.api('@(System.Configuration.ConfigurationManager.AppSettings["TableReservationApi"])');
+        vm.web('@(System.Configuration.ConfigurationManager.AppSettings["TableReservationWeb"])');
+        vm.completeOption(@(System.Configuration.ConfigurationManager.AppSettings["completeOption"]));
+        vm.ClientVersion('v ' + '@typeof(TableReservation.WebApiApplication).Assembly.GetName().Version');
+        vm.initialize();
+        var reservationMade = '@Languages.Resources.ReservationMade';
+        var anotherRoom = '@Languages.Resources.AnotherRoom';
+        var roomExists = '@Languages.Resources.RoomExists';
+        var notPreviousDay = '@Languages.Resources.notPreviousDay';
+        var notNextDay = '@Languages.Resources.notNextDay';
+        var choseTime = '@Languages.Resources.chooseTime';
+        var nothingAvailable = '@Languages.Resources.nothingAvailable';
+        var typeOfMeal = '@Languages.Resources.typeOfMeal';
+
+        $(document).ready(function () {
+            $(".invisible").removeClass("invisible");
+
+            if (hasDescription === "true") {
+                document.getElementById('descID').style.display = 'visible';
+            }
+            else if (hasDescription === "false") {
+                document.getElementById('descID').style.display = 'none';
+            }
+
+        });
+
+    </script>
+
+    <script>
+        var time =  '@(System.Configuration.ConfigurationManager.AppSettings["logoutTime"])';
+        var timeInSecondsAfterSessionOut = parseFloat(time); // change this to change session time out (in seconds).
+        var secondTick = 0;
+        let hasDescription = '@(System.Configuration.ConfigurationManager.AppSettings["hasDescription"])';
+
+        function ResetThisSession() {
+            secondTick = 0;
+        }
+
+        function StartThisSessionTimer() {
+            secondTick++;
+            var timeLeft = timeInSecondsAfterSessionOut - secondTick; // override, we have 30 secs only
+
+            if (timeLeft <= 0) {
+                let predefinedRoom = localStorage.PredefinedRoom;
+                let arrivalDate = localStorage.ArrivalDate;
+                let departureDate = localStorage.DepartureDate;
+                let predefinedReservationName = localStorage.PredefinedReservationName;
+                localStorage.clear();
+                localStorage.PredefinedRoom = predefinedRoom;
+                localStorage.ArrivalDate = arrivalDate;
+                localStorage.DepartureDate = departureDate;
+                localStorage.PredefinedReservationName = predefinedReservationName;
+                window.location.href = "../Reservation/ReservationIndex";
+            }
+            var tick = setTimeout(StartThisSessionTimer, 1000);
+        }
+
+        StartThisSessionTimer();
+
+        $(function () {
+            $("body").on('click keypress', function () {
+                ResetThisSession();
+            });
+        });
+    </script>
+
+}

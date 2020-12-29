@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string predefinedRoomVB = ViewBag.Room;
+    string arrivalDateVB = ViewBag.Arrival;
+    string departureDateVB = ViewBag.Departure;
+    string predefinedReservationNameVB = ViewBag.ReservationName;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="~/Content/css/NewCSS/HomeIndex.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="body-container">
+        <div class="central-container languages-container invisible" data-bind="visible: $root.reservationValidated()">
+            <div class="language-button-container">
+                <div class="language-button language-button-text" type="button" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.UnitedKingdom)"><span>Make here your table reservation</span></div>
+            </div>
+            <div class="language-button-container">
+                <div class="language-button language-button-text" type="button" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.Germany)"><span>Machen Sie hier Ihre Tischreservierung</span></div>
+            </div>
+            <div class="language-button-container">
+                <div class="language-button language-button-text" type="button" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.Russian)"><span>Забронировать стол</span></div>
+            </div>
+            <div class="language-button-container">
+                <div class="language-button language-button-text" type="button" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.France)"><span>Faites ici votre table de reservation</span></div>
+            </div>
+        </div>
+        <div class="central-container check-in-container invisible" data-bind="visible: !$root.reservationValidated()">
+            <div class="check-in">
+                <span class="check-in-text">You have to check in first!</span>
+                <span class="check-in-text">Sie müssen zuerst einchecken!</span>
+                <span class="check-in-text">Вы должны зарегистрироваться в первую очередь!</span>
+                <span class="check-in-text">Vous devez d'abord vous enregistrer!</span>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-right" data-bind="text: $root.clientVersion()"></div>
+</body>
+</html>
+@section scripts{
+
+    <script src="~/Models/LoginViewModel.js"></script>
+
+    <script type="text/javascript">
+        var predefinedRoomJS = '@predefinedRoomVB';
+        var arrivalDateJS = '@arrivalDateVB';
+        var departureDateJS = '@departureDateVB';
+        var predefinedReservationNameJS = '@predefinedReservationNameVB';
+        if (predefinedRoomJS !== undefined && predefinedRoomJS !== null && predefinedRoomJS !== "") {
+            localStorage.PredefinedRoom = predefinedRoomJS;
+        }
+        else {
+            localStorage.PredefinedRoom = "";
+        }
+        if (arrivalDateJS !== undefined && arrivalDateJS !== null && arrivalDateJS !== "") {
+            localStorage.ArrivalDate = arrivalDateJS;
+        }
+        else {
+            localStorage.ArrivalDate = "";
+        }
+        if (departureDateJS !== undefined && departureDateJS !== null && departureDateJS !== "") {
+            localStorage.DepartureDate = departureDateJS;
+        }
+        else {
+            localStorage.DepartureDate = "";
+        }
+        if (predefinedReservationNameJS !== undefined && predefinedReservationNameJS !== null && predefinedReservationNameJS !== "") {
+            localStorage.PredefinedReservationName = predefinedReservationNameJS;
+        }
+        else {
+            localStorage.PredefinedReservationName = "";
+        }
+        var vm = new LoginViewModel();
+        ko.applyBindings(vm);
+        vm.api('@(System.Configuration.ConfigurationManager.AppSettings["TableReservationApi"])');
+        vm.web('@(System.Configuration.ConfigurationManager.AppSettings["TableReservationWeb"])');
+        vm.clientVersion('v ' + '@typeof(TableReservation.WebApiApplication).Assembly.GetName().Version');
+        vm.validateReservation();
+        $(document).ready(function () {
+            $(".invisible").removeClass("invisible");
+        });
+    </script>
+
+}

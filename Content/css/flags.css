@@ -1,0 +1,34 @@
+﻿.greece-flag-icon {
+    background-image: url('../Flags/Greece.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
+.united-kingdom-flag-icon {
+    background-image: url('../Flags/United Kingdom(Great Britain).png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
+.france-flag-icon {
+    background-image: url('../Flags/France.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
+.germany-flag-icon {
+    background-image: url('../Flags/Germany.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
+.russia-flag-icon {
+    background-image: url('../Flags/Russian Federation.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}

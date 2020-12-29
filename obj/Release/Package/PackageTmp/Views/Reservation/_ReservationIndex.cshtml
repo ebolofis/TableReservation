@@ -1,0 +1,277 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var backgroundImage = @System.Configuration.ConfigurationManager.AppSettings["backgroundImage"];
+    var restaurantInfo = @System.Configuration.ConfigurationManager.AppSettings["restaurantInfo"];
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="~/Scripts/bootstrap-checkbox.js" defer></script>
+    <title></title>
+</head>
+<body>
+    <div class="row">
+        <div class="btn-group col-md-11">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @Languages.Resources.Languages
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item greece-flag-icon" style="cursor: pointer;" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.Greece)"><span class="dropdown-span">@Languages.Resources.Greek</span></a>
+                <a class="dropdown-item united-kingdom-flag-icon" style="cursor: pointer;" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.UnitedKingdom)"><span class="dropdown-span">@Languages.Resources.English</span></a>
+                <a class="dropdown-item germany-flag-icon" style="cursor: pointer;" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.Germany)"><span class="dropdown-span">@Languages.Resources.German</span></a>
+                <a class="dropdown-item france-flag-icon" style="cursor: pointer;" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.France)"><span class="dropdown-span">@Languages.Resources.French</span></a>
+                <a class="dropdown-item russia-flag-icon" style="cursor: pointer;" data-bind="click: $root.chooseLanguage.bind($data, availableLanguages.Russia)"><span class="dropdown-span">@Languages.Resources.Russian</span></a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary col-md-1" data-bind="click: $root.cancel">@Languages.Resources.Cancel</button>
+    </div>
+    <div class="spincircle" data-bind="visible: !$root.showForm()">
+        <ul class="circles">
+            <li>
+                <div class="circle circle--1"></div>
+            </li>
+            <li>
+                <div class="circle circle--2"></div>
+            </li>
+            <li>
+                <div class="circle circle--3"></div>
+            </li>
+            <li>
+                <div class="circle circle--4"></div>
+            </li>
+            <li>
+                <div class="circle circle--5"></div>
+            </li>
+            <li>
+                <div class="circle circle--6"></div>
+            </li>
+            <li>
+                <div class="circle circle--7"></div>
+            </li>
+            <li>
+                <div class="circle circle--8"></div>
+            </li>
+        </ul>
+    </div>
+    <form data-bind="visible: $root.showForm()">
+        <div class="row">
+            <div class="col-4">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="paxes" type="text" class="form-control col-md-8" data-bind="value: $root.paxes, css: {'error' : !$root.paxes.isValid() && $root.getPending()}, click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'paxes', 'paxes', 'paxes', null, 1, false), clickBubble: false" placeholder="@Languages.Resources.NoOfPaxes">
+                        <div class="col-md-1"></div>
+                        <div class="custom-flex-center custom-default-button-no-action register-keyboard col-md-2" data-bind="click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'paxes', 'paxes', 'paxes', null, 1, false), clickBubble: false"><i class="fa fa-keyboard-o"></i></div>
+                    </div>
+                    <span data-bind="if: !$root.paxes.isValid() && $root.getPending()" class="err">@Languages.Resources.PaxesRequired</span>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="name" type="text" class="form-control col-md-8" data-bind="value: $root.name, css: {'error' : !$root.name.isValid() && $root.getPending()}, click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'name', 'name', 'name', null, 2, false), clickBubble: false" placeholder="@Languages.Resources.Name">
+                        <div class="col-md-1"></div>
+                        <div class="custom-flex-center custom-default-button-no-action register-keyboard col-md-2" data-bind="click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'name', 'name', 'name', null, 2, false), clickBubble: false"><i class="fa fa-keyboard-o"></i></div>
+                    </div>
+                    <span data-bind="if: !$root.name.isValid() && $root.getPending()" class="err">@Languages.Resources.NameRequired</span>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="room" type="text" class="form-control col-md-8" data-bind="value: $root.room, css: {'error' : !$root.room.isValid() && $root.getPending()}, click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'room', 'room', 'room', null, 2, false), clickBubble: false" placeholder="@Languages.Resources.Room">
+                        <div class="col-md-1"></div>
+                        <div class="custom-flex-center custom-default-button-no-action register-keyboard col-md-2" data-bind="click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'room', 'room', 'room', null, 2, false), clickBubble: false"><i class="fa fa-keyboard-o"></i></div>
+                    </div>
+                    <span data-bind="if: !$root.room.isValid() && $root.getPending()" class="err">@Languages.Resources.RoomRequired</span>
+                </fieldset>
+                <button style="margin-bottom:10px;" type="submit" class="btn btn-primary" data-bind="click: getCustomerInfo">@Languages.Resources.Next</button>
+            </div>
+            <div class="col-6">
+                <div class="row" data-bind="foreach: extraRooms">
+                    <div class="col-7">
+                        <input type="text" class="form-control" data-bind="value: room, attr: { id: 'extraRoom_' + $index() }, click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'extraRoom_' + $index(), 'extraRoom_' + $index(), 'extraRoom_' + $index(), null, 2, false), clickBubble: false" placeholder="Room">
+                    </div>
+                    <div class="col-1">
+                        <div class="custom-flex-center custom-default-button-no-action register-keyboard col-md-2" data-bind="click: $root.keyboardNew.InitializeKeyboard.bind($data, $root, 'extraRoom_' + $index(), 'extraRoom_' + $index(), 'extraRoom_' + $index(), null, 2, false), clickBubble: false"><i class="fa fa-keyboard-o"></i></div>
+                    </div>
+                    <div class="col-1">
+                        <img src="~/Content/Images/MaterialIcons/ic_delete_forever_black_24dp_1x.png" alt="Delete" style="cursor: pointer" data-bind="click: $root.deleteRoom">
+                    </div>
+                    <div class="col-2">
+                        <button style="margin-bottom:10px;" type="submit" class="btn btn-primary" data-bind="click: $root.getRoomInfo">@Languages.Resources.Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" data-bind="visible: $root.availableDates().length > 0">
+            <div class="row">
+                <div class="page">
+                    <div class="metr" data-bind="foreach: availableDates">
+                        <div class="metrostyle orgmetro">
+                            <div>
+                                <span style="font-size: 1.3em; color: white; padding-left: 0.3em; margin-top: 3px;" data-bind="text: moment(AvailDate).format('DD/MM/YYYY')"></span>
+                            </div>
+                            <div class="metr" data-bind="foreach: $data.Info">
+                                <div>
+                                    <span class="restTile spanTileHeader" style="max-width:10px;" data-bind="text: RestaurantName, click: $root.openModalInfo.bind($data, $parent, 1)"></span>
+                                    <span class="spanTileDetail" data-bind="foreach: $data.Infoo">
+                                        <span class="spanTileDetail restTile" data-bind="text: Type, click: $root.openModalInfo.bind($data, $parents[1], 2)"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Modal -->
+    <div class="modal fade modal-dimensions" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">@Languages.Resources.ChooseReservationTime</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" data-bind="with: $root.restaurantDetails">
+                    <div class="row">
+                        <!--ko if: $data.Image != '' && $data.Image != null && $data.DescriptionEn != '' && $data.DescriptionGR != '' && $data.DescriptionFr != '' && $data.DescriptionRu != '' && $data.DescriptionDe != ''-->
+                        <div class="col-md-6">
+                            <!--ko if: $data.Image != '' && $data.Image != null-->
+                            <img class="modal-img-dimensions" data-bind="attr: {src: $data.Image}">
+                            <!--/ko-->
+                            <!--ko if: $root.selectedLanguage() == 'en' -->
+                            <p class="text-info" data-bind="text: DescriptionEn"></p>
+                            <!--/ko-->
+                            <!--ko if: $root.selectedLanguage() == 'de' -->
+                            <p class="text-info" data-bind="text: DescriptionDe"></p>
+                            <!--/ko-->
+                            <!--ko if: $root.selectedLanguage() == 'fr' -->
+                            <p class="text-info" data-bind="text: DescriptionFr"></p>
+                            <!--/ko-->
+                            <!--ko if: $root.selectedLanguage() == 'el' -->
+                            <p class="text-info" data-bind="text: DescriptionGR"></p>
+                            <!--/ko-->
+                            <!--ko if: $root.selectedLanguage() == 'ru' -->
+                            <p class="text-info" data-bind="text: DescriptionRu"></p>
+                            <!--/ko-->
+                        </div>
+                        <!--/ko-->
+                        <div class="col-md-6" data-bind="foreach: $root.availableTimes" style="cursor: pointer">
+                            <div class="times-hover">
+                                <span class="text-primary" data-bind="text: TimeType, click: $root.finalizeReservation.bind($data, $parent)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Languages.Resources.Close</button>
+                    @*<button type="button" class="btn btn-primary">@Languages.Resources.Next</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade modal-dimensions" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width:50%;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">@Languages.Resources.MakeReservation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" data-bind="click: $root.cancel()">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6" data-bind="foreach: $root.customerInfo">
+                            <div>
+                                <!--ko if: $data.Email != ''-->
+                                <span data-bind="text: Email"></span>
+                                <!--/ko-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!--ko if: $root.emailFound() -->
+                                <button type="button" class="btn btn-info" data-bind="click: $root.saveReservation.bind($data, true, false), enable: $root.lockSave()">@Languages.Resources.SendEmail</button>
+                                <!--/ko-->
+                            </div>
+                            <br />
+                            <div class="row">
+                                <button type="button" class="btn btn-info" data-bind="click: $root.saveReservation.bind($data, false, true), enable: $root.lockSave()">@Languages.Resources.Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" data-bind="click: $root.cancel(), enable: $root.lockSave()">@Languages.Resources.Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@section scripts{
+
+    <script src="~/Models/ReservationViewModel.js"></script>
+
+    <script type="text/javascript">
+    var vm = new ReservationViewModel();
+        ko.applyBindings(vm);
+        vm.api('@(System.Configuration.ConfigurationManager.AppSettings["TableReservationApi"])');
+        vm.web('@(System.Configuration.ConfigurationManager.AppSettings["TableReservationWeb"])');
+        vm.ClientVersion('v ' + '@typeof(TableReservation.WebApiApplication).Assembly.GetName().Version');
+        if (localStorage.getItem("event") == '' || localStorage.getItem("event") === null) {
+            vm.setAuthorizationHeader('en');
+            vm.selectedLanguage('en');
+        }
+        else {
+            vm.setAuthorizationHeader(localStorage.Lang);
+            vm.selectedLanguage(localStorage.Lang);
+        }
+        localStorage.event = "";
+        var reservationMade = '@Languages.Resources.ReservationMade';
+        var anotherRoom = '@Languages.Resources.AnotherRoom';
+        var roomExists = '@Languages.Resources.RoomExists';
+
+    </script>
+
+    <script>
+    var time = '@(System.Configuration.ConfigurationManager.AppSettings["logoutTime"])';
+    $(function () {
+        $("body").on('click keypress', function () {
+            ResetThisSession();
+        });
+    });
+
+    var timeInSecondsAfterSessionOut = time; // change this to change session time out (in seconds).
+    var secondTick = 0;
+
+    function ResetThisSession() {
+        secondTick = 0;
+    }
+
+    function StartThisSessionTimer() {
+        secondTick++;
+        var timeLeft = ((timeInSecondsAfterSessionOut - secondTick) / 1).toFixed(0); // in minutes
+        timeLeft = timeInSecondsAfterSessionOut - secondTick; // override, we have 30 secs only
+
+        $("#spanTimeLeft").html(timeLeft);
+
+        if (secondTick > timeInSecondsAfterSessionOut) {
+            clearTimeout(tick);
+            localStorage.clear();
+            window.location.href = "../Reservation/ReservationIndex";
+            vm.chooseLanguage('en');
+            return;
+        }
+        tick = setTimeout("StartThisSessionTimer()", 1000);
+    }
+
+    StartThisSessionTimer();
+    </script>
+
+}

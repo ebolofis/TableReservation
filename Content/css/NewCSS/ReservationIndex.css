@@ -1,0 +1,1883 @@
+﻿.circle-spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation-container {
+    width: 60%;
+    height: 60%;
+    margin-bottom: 5%;
+    background-color: rgba(159, 144, 105, 0.85);
+    border: 1px solid #6D6140;
+    border-radius: 22px;
+    padding: 1% 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reservation-row-container {
+    display: flex;
+    flex-basis: 23.33%;
+}
+
+.reservation-row {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.reservation-row-empty-container {
+    display: flex;
+    flex-basis: 15%;
+}
+
+.reservation-row-input-container {
+    display: flex;
+    flex-basis: 70%;
+    align-items: center;
+}
+
+.reservation-row-input {
+    max-width: 100%;
+    height: 70%;
+    font-size: 20pt;
+}
+
+.reservation-row-input-disabled {
+    background-color: #9A9A9A !important;
+    color: #00313C !important;
+    cursor: not-allowed;
+}
+
+.reservation-row-error-container {
+    display: flex;
+    flex-basis: 15%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.reservation-row-error {
+    font-size: 10pt;
+}
+
+.reservation-button-row-container {
+    display: flex;
+    flex-basis: 30%;
+}
+
+.reservation-button-row {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.reservation-button-container {
+    display: flex;
+    flex-basis: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation-button {
+    width: 50%;
+    height: 70%;
+    cursor: pointer;
+}
+
+.resrevation-button-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 22pt;
+}
+
+.reservation-button-previous {
+    background-color: #C2C2C2;
+    color: #00313C;
+    border: 1px solid #00313C;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+.reservation-button-next {
+    background-color: #00313c;
+    color: #C2C2C2;
+    border: 1px solid #C2C2C2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+.extra-reservation-container {
+    width: 60%;
+    height: 60%;
+    margin-bottom: 5%;
+    background-color: rgba(159, 144, 105, 0.85);
+    border: 1px solid #6D6140;
+    border-radius: 22px;
+    padding: 1% 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.extra-reservation-row-container {
+    padding: 1%;
+    display: flex;
+    flex-basis: 70%;
+}
+
+.extra-reservation-row {
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+}
+
+.extra-reservation-row-empty-container {
+    display: flex;
+    flex-basis: 15%;
+}
+
+.extra-reservation-row-input-container {
+    display: flex;
+    flex-basis: 70%;
+    align-items: center;
+}
+
+.extra-reservation-row-input {
+    max-width: 100%;
+    height: 70%;
+    font-size: 20pt;
+}
+
+.extra-reservation-row-delete-container {
+    display: flex;
+    flex-basis: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.extra-reservation-row-delete {
+    cursor: pointer;
+}
+
+.restaurant-reservation-container {
+    width: 60%;
+    height: 60%;
+    margin-bottom: 5%;
+    background-color: rgba(159, 144, 105, 0.85);
+    border: 1px solid #6D6140;
+    border-radius: 22px;
+    padding: 1% 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-date-reservation-row-container {
+    display: flex;
+    flex-basis: 20%;
+}
+
+.restaurant-date-reservation-row {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.restaurant-date-reservation-row-arrow {
+    display: flex;
+    flex-basis: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-date-previous-day {
+    font-size: 29pt;
+    color: #00313C;
+    cursor: pointer;
+}
+
+.restaurant-date-next-day {
+    font-size: 29pt;
+    color: #00313C;
+    cursor: pointer;
+}
+
+.restaurant-date-reservation-row-date {
+    display: flex;
+    flex-basis: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-date-date {
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 28pt;
+    color: #00313C;
+}
+
+.restaurant-restaurants-reservation-row-container {
+    display: flex;
+    flex-basis: 50%;
+    background-color: #FFFFFF;
+    border: 1px solid #00313C;
+    border-radius: 15px;
+}
+
+.restaurant-restaurants-reservation-row {
+    height: 40px;
+    margin: 1%;
+    display: flex;
+    flex-direction: row;
+}
+
+.restaurant-restaurants-reservation-row-restaurant {
+    display: flex;
+    flex-basis: 30%;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 20pt;
+    color: #00313C;
+}
+
+.restaurant-restaurants-reservation-row-dates {
+    display: flex;
+    flex-basis: 70%;
+    flex-direction: row;
+}
+
+.restaurant-restaurants-reservation-row-date {
+    display: flex;
+    flex-basis: 33%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.restaurant-date {
+    padding: 1%;
+    color: #00313C;
+    border: 1px solid #00313C;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 21pt;
+    cursor: pointer;
+}
+
+.restaurant-date-selected {
+    background-color: #D1C5C2;
+}
+
+.time-reservation-container {
+    width: 60%;
+    height: 60%;
+    margin-bottom: 5%;
+    background-color: rgba(159, 144, 105, 0.85);
+    border: 1px solid #6D6140;
+    border-radius: 22px;
+    padding: 1% 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.time-restaurant-reservation-row-container {
+    display: flex;
+    flex-basis: 20%;
+}
+
+.time-restaurant-reservation-row {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-restaurant {
+    padding: 0.5%;
+    background-color: #FFFFFF;
+    color: #00313C;
+    border: 1px solid #00313C;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 20pt;
+}
+
+.time-hour-reservation-row-container {
+    display: flex;
+    flex-basis: 50%;
+    background-color: #FFFFFF;
+    border: 1px solid #00313C;
+    border-radius: 15px;
+    overflow: auto;
+}
+
+.time-hour-reservation-row {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.time-hour-container {
+    width: 20%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-hour {
+    color: #00313C;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 20pt;
+    cursor: pointer;
+}
+
+.time-hour-selected {
+    color: #D1C5C2;
+}
+
+.complete-reservation-container {
+    width: 60%;
+    height: 60%;
+    margin-bottom: 5%;
+    background-color: rgba(159, 144, 105, 0.85);
+    border: 1px solid #6D6140;
+    border-radius: 22px;
+    padding: 1% 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.complete-information-reservation-row-container {
+    display: flex;
+    flex-basis: 60%;
+    background-color: #FFFFFF;
+    border: 1px solid #00313C;
+    border-radius: 15px;
+}
+
+.complete-information-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.complete-information-date-container {
+    display: flex;
+    flex-basis: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.complete-information-date {
+    color: #00313C;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 32pt;
+}
+
+.complete-information-reservation-container {
+    display: flex;
+    flex-basis: 50%;
+}
+
+.complete-information-reservation-information-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.complete-information-reservation-information {
+    display: flex;
+    flex-basis: 33.33%;
+    justify-content: center;
+    align-items: center;
+}
+
+.complete-information-restaurant {
+    color: #9F9069;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 24pt;
+}
+
+.complete-information-type {
+    color: #9F9069;
+    border: 1px solid #9F9069;
+    padding: 1%;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 24pt;
+}
+
+.complete-information-time {
+    color: #9F9069;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 24pt;
+}
+
+.complete-actions-reservation-row-container {
+    display: flex;
+    flex-basis: 40%;
+}
+
+.complete-button-row {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.complete-button-container {
+    display: flex;
+    flex-basis: 50%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.complete-button {
+    width: 80%;
+    height: 50%;
+    cursor: pointer;
+}
+
+.complete-button-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 22pt;
+}
+
+.complete-button-text-email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 22pt; /*12*/
+}
+
+.complete-button-text-print {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 22pt; /*12*/
+}
+
+.complete-button-previous {
+    background-color: #C2C2C2;
+    color: #00313C;
+    border: 1px solid #00313C;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+.complete-button-next {
+    background-color: #00313c;
+    color: #C2C2C2;
+    border: 1px solid #C2C2C2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+.message-reservation-container {
+    width: 40%;
+    height: 40%;
+    margin-bottom: 5%;
+    background-color: rgba(159, 144, 105, 0.85);
+    border: 1px solid #6D6140;
+    border-radius: 22px;
+    padding: 1% 2%;
+}
+
+.message-reservation {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.message-reservation-text {
+    font-family: "Gotham Pro", Montserrat;
+    font-size: 28pt;
+    color: #FFFFFF;
+}
+
+@media only screen and (max-width: 1024px) {
+    .reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .reservation-row {
+        flex-direction: column;
+    }
+
+    .reservation-row-empty-container {
+        flex-basis: 10%;
+    }
+
+    .reservation-row-input-container {
+        flex-basis: 70%;
+    }
+
+    .reservation-row-input {
+        height: 70%;
+        font-size: 28pt;
+    }
+
+    .reservation-row-error-container {
+        flex-basis: 20%;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .reservation-row-error {
+        font-size: 16pt;
+    }
+
+    .reservation-button-row {
+        flex-direction: column;
+    }
+
+    .reservation-button {
+        width: 90%;
+        height: 90%;
+    }
+
+    .resrevation-button-text {
+        font-size: 30pt;
+    }
+
+    .extra-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .extra-reservation-row-container {
+        padding: 1%;
+    }
+
+    .extra-reservation-row {
+        height: 130px;
+    }
+
+    .extra-reservation-row-input {
+        height: 70%;
+        font-size: 28pt;
+    }
+
+    .restaurant-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .restaurant-date-previous-day {
+        font-size: 50pt;
+    }
+
+    .restaurant-date-next-day {
+        font-size: 50pt;
+    }
+
+    .restaurant-date-date {
+        font-size: 48pt;
+    }
+
+    .restaurant-restaurants-reservation-row {
+        height: 150px;
+        margin: 1%;
+        flex-direction: column;
+    }
+
+    .restaurant-restaurants-reservation-row-restaurant {
+        flex-basis: 50%;
+        font-size: 34pt;
+    }
+
+    .restaurant-restaurants-reservation-row-dates {
+        flex-basis: 50%;
+    }
+
+    .restaurant-date {
+        padding: 2%;
+        font-size: 31pt;
+    }
+
+    .time-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .time-restaurant {
+        padding: 1%;
+        font-size: 48pt;
+    }
+
+    .time-hour-container {
+        width: 50%;
+    }
+
+    .time-hour {
+        font-size: 34pt;
+    }
+
+    .complete-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .complete-information-date-container {
+        flex-basis: 25%;
+    }
+
+    .complete-information-date {
+        font-size: 48pt;
+    }
+
+    .complete-information-reservation-container {
+        flex-basis: 75%;
+    }
+
+    .complete-information-reservation-information-container {
+        flex-direction: column;
+    }
+
+    .complete-information-restaurant {
+        font-size: 34pt;
+    }
+
+    .complete-information-type {
+        padding: 1%;
+        font-size: 34pt;
+    }
+
+    .complete-information-time {
+        font-size: 34pt;
+    }
+
+    .complete-button-row {
+        flex-wrap: wrap;
+    }
+
+    .complete-button {
+        width: 90%;
+        height: 85%;
+    }
+
+    .complete-button-text {
+        font-size: 30pt;
+    }
+
+    .complete-button-text-email {
+        font-size: 30pt; /*22*/
+    }
+
+    .complete-button-text-print {
+        font-size: 30pt; /*22*/
+    }
+
+    .message-reservation-container {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .message-reservation-text {
+        font-size: 48pt;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .reservation-row {
+        flex-direction: column;
+    }
+
+    .reservation-row-empty-container {
+        flex-basis: 10%;
+    }
+
+    .reservation-row-input-container {
+        flex-basis: 70%;
+    }
+
+    .reservation-row-input {
+        height: 70%;
+        font-size: 20pt;
+    }
+
+    .reservation-row-error-container {
+        flex-basis: 20%;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .reservation-row-error {
+        font-size: 11pt;
+    }
+
+    .reservation-button-row {
+        flex-direction: column;
+    }
+
+    .reservation-button {
+        width: 90%;
+        height: 90%;
+    }
+
+    .resrevation-button-text {
+        font-size: 21pt;
+    }
+
+    .extra-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .extra-reservation-row-container {
+        padding: 1%;
+    }
+
+    .extra-reservation-row {
+        height: 95px;
+    }
+
+    .extra-reservation-row-input {
+        height: 70%;
+        font-size: 20pt;
+    }
+
+    .restaurant-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .restaurant-date-previous-day {
+        font-size: 38pt;
+    }
+
+    .restaurant-date-next-day {
+        font-size: 38pt;
+    }
+
+    .restaurant-date-date {
+        font-size: 34pt;
+    }
+
+    .restaurant-restaurants-reservation-row {
+        height: 100px;
+        margin: 1%;
+        flex-direction: column;
+    }
+
+    .restaurant-restaurants-reservation-row-restaurant {
+        flex-basis: 50%;
+        font-size: 24pt;
+    }
+
+    .restaurant-restaurants-reservation-row-dates {
+        flex-basis: 50%;
+    }
+
+    .restaurant-date {
+        padding: 2%;
+        font-size: 20pt;
+    }
+
+    .time-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .time-restaurant {
+        padding: 1%;
+        font-size: 34pt;
+    }
+
+    .time-hour-container {
+        width: 50%;
+    }
+
+    .time-hour {
+        font-size: 24pt;
+    }
+
+    .complete-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .complete-information-date-container {
+        flex-basis: 25%;
+    }
+
+    .complete-information-date {
+        font-size: 34pt;
+    }
+
+    .complete-information-reservation-container {
+        flex-basis: 75%;
+    }
+
+    .complete-information-reservation-information-container {
+        flex-direction: column;
+    }
+
+    .complete-information-restaurant {
+        font-size: 24pt;
+    }
+
+    .complete-information-type {
+        padding: 1%;
+        font-size: 24pt;
+    }
+
+    .complete-information-time {
+        font-size: 24pt;
+    }
+
+    .complete-button-row {
+        flex-wrap: wrap;
+    }
+
+    .complete-button {
+        width: 90%;
+        height: 85%;
+    }
+
+    .complete-button-text {
+        font-size: 21pt;
+    }
+
+    .complete-button-text-email {
+        font-size: 21pt; /*17*/
+    }
+
+    .complete-button-text-print {
+        font-size: 21pt; /*17*/
+    }
+
+    .message-reservation-container {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .message-reservation-text {
+        font-size: 34pt;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .reservation-row {
+        flex-direction: column;
+    }
+
+    .reservation-row-empty-container {
+        flex-basis: 10%;
+    }
+
+    .reservation-row-input-container {
+        flex-basis: 70%;
+    }
+
+    .reservation-row-input {
+        height: 70%;
+        font-size: 14pt;
+    }
+
+    .reservation-row-error-container {
+        flex-basis: 20%;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .reservation-row-error {
+        font-size: 9pt;
+    }
+
+    .reservation-button-row {
+        flex-direction: column;
+    }
+
+    .reservation-button {
+        width: 90%;
+        height: 90%;
+    }
+
+    .resrevation-button-text {
+        font-size: 15pt;
+    }
+
+    .extra-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .extra-reservation-row-container {
+        padding: 1%;
+    }
+
+    .extra-reservation-row {
+        height: 70px;
+    }
+
+    .extra-reservation-row-input {
+        height: 70%;
+        font-size: 14pt;
+    }
+
+    .restaurant-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .restaurant-date-previous-day {
+        font-size: 26pt;
+    }
+
+    .restaurant-date-next-day {
+        font-size: 26pt;
+    }
+
+    .restaurant-date-date {
+        font-size: 22pt;
+    }
+
+    .restaurant-restaurants-reservation-row {
+        height: 80px;
+        margin: 1%;
+        flex-direction: column;
+    }
+
+    .restaurant-restaurants-reservation-row-restaurant {
+        flex-basis: 50%;
+        font-size: 17pt;
+    }
+
+    .restaurant-restaurants-reservation-row-dates {
+        flex-basis: 50%;
+    }
+
+    .restaurant-date {
+        padding: 2%;
+        font-size: 17pt;
+    }
+
+    .time-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .time-restaurant {
+        padding: 1%;
+        font-size: 22pt;
+    }
+
+    .time-hour-container {
+        width: 50%;
+    }
+
+    .time-hour {
+        font-size: 17pt;
+    }
+
+    .complete-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .complete-information-date-container {
+        flex-basis: 25%;
+    }
+
+    .complete-information-date {
+        font-size: 22pt;
+    }
+
+    .complete-information-reservation-container {
+        flex-basis: 75%;
+    }
+
+    .complete-information-reservation-information-container {
+        flex-direction: column;
+    }
+
+    .complete-information-restaurant {
+        font-size: 17pt;
+    }
+
+    .complete-information-type {
+        padding: 1%;
+        font-size: 17pt;
+    }
+
+    .complete-information-time {
+        font-size: 17pt;
+    }
+
+    .complete-button-row {
+        flex-wrap: wrap;
+    }
+
+    .complete-button {
+        width: 90%;
+        height: 85%;
+    }
+
+    .complete-button-text {
+        font-size: 15pt;
+    }
+
+    .complete-button-text-email {
+        font-size: 15pt; /*9*/
+    }
+
+    .complete-button-text-print {
+        font-size: 15pt; /*9*/
+    }
+
+    .message-reservation-container {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .message-reservation-text {
+        font-size: 22pt;
+    }
+}
+
+@media only screen and (max-width: 411px) {
+    .reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .reservation-row {
+        flex-direction: column;
+    }
+
+    .reservation-row-empty-container {
+        flex-basis: 10%;
+    }
+
+    .reservation-row-input-container {
+        flex-basis: 70%;
+    }
+
+    .reservation-row-input {
+        height: 70%;
+        font-size: 14pt;
+    }
+
+    .reservation-row-error-container {
+        flex-basis: 20%;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .reservation-row-error {
+        font-size: 9pt;
+    }
+
+    .reservation-button-row {
+        flex-direction: column;
+    }
+
+    .reservation-button {
+        width: 90%;
+        height: 90%;
+    }
+
+    .resrevation-button-text {
+        font-size: 15pt;
+    }
+
+    .extra-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .extra-reservation-row-container {
+        padding: 1%;
+    }
+
+    .extra-reservation-row {
+        height: 70px;
+    }
+
+    .extra-reservation-row-input {
+        height: 70%;
+        font-size: 14pt;
+    }
+
+    .restaurant-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .restaurant-date-previous-day {
+        font-size: 26pt;
+    }
+
+    .restaurant-date-next-day {
+        font-size: 26pt;
+    }
+
+    .restaurant-date-date {
+        font-size: 22pt;
+    }
+
+    .restaurant-restaurants-reservation-row {
+        height: 80px;
+        margin: 1%;
+        flex-direction: column;
+    }
+
+    .restaurant-restaurants-reservation-row-restaurant {
+        flex-basis: 50%;
+        font-size: 17pt;
+    }
+
+    .restaurant-restaurants-reservation-row-dates {
+        flex-basis: 50%;
+    }
+
+    .restaurant-date {
+        padding: 2%;
+        font-size: 17pt;
+    }
+
+    .time-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .time-restaurant {
+        padding: 1%;
+        font-size: 22pt;
+    }
+
+    .time-hour-container {
+        width: 50%;
+    }
+
+    .time-hour {
+        font-size: 17pt;
+    }
+
+    .complete-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .complete-information-date-container {
+        flex-basis: 25%;
+    }
+
+    .complete-information-date {
+        font-size: 22pt;
+    }
+
+    .complete-information-reservation-container {
+        flex-basis: 75%;
+    }
+
+    .complete-information-reservation-information-container {
+        flex-direction: column;
+    }
+
+    .complete-information-restaurant {
+        font-size: 17pt;
+    }
+
+    .complete-information-type {
+        padding: 1%;
+        font-size: 17pt;
+    }
+
+    .complete-information-time {
+        font-size: 17pt;
+    }
+
+    .complete-button-row {
+        flex-wrap: wrap;
+    }
+
+    .complete-button {
+        width: 90%;
+        height: 85%;
+    }
+
+    .complete-button-text {
+        font-size: 15pt;
+    }
+
+    .complete-button-text-email {
+        font-size: 15pt; /*8*/
+    }
+
+    .complete-button-text-print {
+        font-size: 15pt; /*8*/
+    }
+
+    .message-reservation-container {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .message-reservation-text {
+        font-size: 22pt;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .reservation-row {
+        flex-direction: column;
+    }
+
+    .reservation-row-empty-container {
+        flex-basis: 10%;
+    }
+
+    .reservation-row-input-container {
+        flex-basis: 70%;
+    }
+
+    .reservation-row-input {
+        height: 70%;
+        font-size: 13pt;
+    }
+
+    .reservation-row-error-container {
+        flex-basis: 20%;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .reservation-row-error {
+        font-size: 8pt;
+    }
+
+    .reservation-button-row {
+        flex-direction: column;
+    }
+
+    .reservation-button {
+        width: 90%;
+        height: 90%;
+    }
+
+    .resrevation-button-text {
+        font-size: 14pt;
+    }
+
+    .extra-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .extra-reservation-row-container {
+        padding: 1%;
+    }
+
+    .extra-reservation-row {
+        height: 65px;
+    }
+
+    .extra-reservation-row-input {
+        height: 70%;
+        font-size: 13pt;
+    }
+
+    .restaurant-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .restaurant-date-previous-day {
+        font-size: 28pt;
+    }
+
+    .restaurant-date-next-day {
+        font-size: 28pt;
+    }
+
+    .restaurant-date-date {
+        font-size: 22pt;
+    }
+
+    .restaurant-restaurants-reservation-row {
+        height: 80px;
+        margin: 1%;
+        flex-direction: column;
+    }
+
+    .restaurant-restaurants-reservation-row-restaurant {
+        flex-basis: 50%;
+        font-size: 16pt;
+    }
+
+    .restaurant-restaurants-reservation-row-dates {
+        flex-basis: 50%;
+    }
+
+    .restaurant-date {
+        padding: 2%;
+        font-size: 15pt;
+    }
+
+    .time-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .time-restaurant {
+        padding: 1%;
+        font-size: 22pt;
+    }
+
+    .time-hour-container {
+        width: 50%;
+    }
+
+    .time-hour {
+        font-size: 16pt;
+    }
+
+    .complete-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .complete-information-date-container {
+        flex-basis: 25%;
+    }
+
+    .complete-information-date {
+        font-size: 22pt;
+    }
+
+    .complete-information-reservation-container {
+        flex-basis: 75%;
+    }
+
+    .complete-information-reservation-information-container {
+        flex-direction: column;
+    }
+
+    .complete-information-restaurant {
+        font-size: 16pt;
+    }
+
+    .complete-information-type {
+        padding: 1%;
+        font-size: 16pt;
+    }
+
+    .complete-information-time {
+        font-size: 16pt;
+    }
+
+    .complete-button-row {
+        flex-wrap: wrap;
+    }
+
+    .complete-button {
+        width: 90%;
+        height: 85%;
+    }
+
+    .complete-button-text {
+        font-size: 14pt;
+    }
+
+    .complete-button-text-email {
+        font-size: 14pt; /*8*/
+    }
+
+    .complete-button-text-print {
+        font-size: 14pt; /*8*/
+    }
+
+    .message-reservation-container {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .message-reservation-text {
+        font-size: 22pt;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .reservation-row {
+        flex-direction: column;
+    }
+
+    .reservation-row-empty-container {
+        flex-basis: 10%;
+    }
+
+    .reservation-row-input-container {
+        flex-basis: 70%;
+    }
+
+    .reservation-row-input {
+        height: 70%;
+        font-size: 13pt;
+    }
+
+    .reservation-row-error-container {
+        flex-basis: 20%;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .reservation-row-error {
+        font-size: 8pt;
+    }
+
+    .reservation-button-row {
+        flex-direction: column;
+    }
+
+    .reservation-button {
+        width: 90%;
+        height: 90%;
+    }
+
+    .resrevation-button-text {
+        font-size: 14pt;
+    }
+
+    .extra-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .extra-reservation-row-container {
+        padding: 1%;
+    }
+
+    .extra-reservation-row {
+        height: 60px;
+    }
+
+    .extra-reservation-row-input {
+        height: 70%;
+        font-size: 13pt;
+    }
+
+    .restaurant-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .restaurant-date-previous-day {
+        font-size: 20pt;
+    }
+
+    .restaurant-date-next-day {
+        font-size: 20pt;
+    }
+
+    .restaurant-date-date {
+        font-size: 18pt;
+    }
+
+    .restaurant-restaurants-reservation-row {
+        height: 80px;
+        margin: 1%;
+        flex-direction: column;
+    }
+
+    .restaurant-restaurants-reservation-row-restaurant {
+        flex-basis: 50%;
+        font-size: 16pt;
+    }
+
+    .restaurant-restaurants-reservation-row-dates {
+        flex-basis: 50%;
+    }
+
+    .restaurant-date {
+        padding: 2%;
+        font-size: 15pt;
+    }
+
+    .time-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .time-restaurant {
+        padding: 1%;
+        font-size: 18pt;
+    }
+
+    .time-hour-container {
+        width: 50%;
+    }
+
+    .time-hour {
+        font-size: 16pt;
+    }
+
+    .complete-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .complete-information-date-container {
+        flex-basis: 25%;
+    }
+
+    .complete-information-date {
+        font-size: 18pt;
+    }
+
+    .complete-information-reservation-container {
+        flex-basis: 75%;
+    }
+
+    .complete-information-reservation-information-container {
+        flex-direction: column;
+    }
+
+    .complete-information-restaurant {
+        font-size: 16pt;
+    }
+
+    .complete-information-type {
+        padding: 1%;
+        font-size: 16pt;
+    }
+
+    .complete-information-time {
+        font-size: 16pt;
+    }
+
+    .complete-button-row {
+        flex-wrap: wrap;
+    }
+
+    .complete-button {
+        width: 90%;
+        height: 85%;
+    }
+
+    .complete-button-text {
+        font-size: 14pt;
+    }
+
+    .complete-button-text-email {
+        font-size: 14pt; /*7*/
+    }
+
+    .complete-button-text-print {
+        font-size: 14pt; /*7*/
+    }
+
+    .message-reservation-container {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .message-reservation-text {
+        font-size: 18pt;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .reservation-row {
+        flex-direction: column;
+    }
+
+    .reservation-row-empty-container {
+        flex-basis: 10%;
+    }
+
+    .reservation-row-input-container {
+        flex-basis: 70%;
+    }
+
+    .reservation-row-input {
+        height: 70%;
+        font-size: 10pt;
+    }
+
+    .reservation-row-error-container {
+        flex-basis: 20%;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .reservation-row-error {
+        font-size: 7pt;
+    }
+
+    .reservation-button-row {
+        flex-direction: column;
+    }
+
+    .reservation-button {
+        width: 90%;
+        height: 90%;
+    }
+
+    .resrevation-button-text {
+        font-size: 11pt;
+    }
+
+    .extra-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .extra-reservation-row-container {
+        padding: 1%;
+    }
+
+    .extra-reservation-row {
+        height: 55px;
+    }
+
+    .extra-reservation-row-input {
+        height: 70%;
+        font-size: 10pt;
+    }
+
+    .restaurant-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .restaurant-date-previous-day {
+        font-size: 20pt;
+    }
+
+    .restaurant-date-next-day {
+        font-size: 20pt;
+    }
+
+    .restaurant-date-date {
+        font-size: 18pt;
+    }
+
+    .restaurant-restaurants-reservation-row {
+        height: 80px;
+        margin: 1%;
+        flex-direction: column;
+    }
+
+    .restaurant-restaurants-reservation-row-restaurant {
+        flex-basis: 50%;
+        font-size: 13pt;
+    }
+
+    .restaurant-restaurants-reservation-row-dates {
+        flex-basis: 50%;
+    }
+
+    .restaurant-date {
+        padding: 2%;
+        font-size: 13pt;
+    }
+
+    .time-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .time-restaurant {
+        padding: 1%;
+        font-size: 18pt;
+    }
+
+    .time-hour-container {
+        width: 50%;
+    }
+
+    .time-hour {
+        font-size: 13pt;
+    }
+
+    .complete-reservation-container {
+        width: 90%;
+        height: 90%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .complete-information-date-container {
+        flex-basis: 25%;
+    }
+
+    .complete-information-date {
+        font-size: 18pt;
+    }
+
+    .complete-information-reservation-container {
+        flex-basis: 75%;
+    }
+
+    .complete-information-reservation-information-container {
+        flex-direction: column;
+    }
+
+    .complete-information-restaurant {
+        font-size: 13pt;
+    }
+
+    .complete-information-type {
+        padding: 1%;
+        font-size: 13pt;
+    }
+
+    .complete-information-time {
+        font-size: 13pt;
+    }
+
+    .complete-button-row {
+        flex-wrap: wrap;
+    }
+
+    .complete-button {
+        width: 90%;
+        height: 85%;
+    }
+
+    .complete-button-text {
+        font-size: 11pt;
+    }
+
+    .complete-button-text-email {
+        font-size: 11pt; /*6*/
+    }
+
+    .complete-button-text-print {
+        font-size: 11pt; /*6*/
+    }
+
+    .message-reservation-container {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 5%;
+        padding: 1% 2%;
+    }
+
+    .message-reservation-text {
+        font-size: 18pt;
+    }
+}

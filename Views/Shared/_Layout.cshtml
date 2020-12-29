@@ -1,0 +1,60 @@
+﻿@{
+    string backgroundImage = @System.Configuration.ConfigurationManager.AppSettings["backgroundImage"];
+    string logo = @System.Configuration.ConfigurationManager.AppSettings["logo"];
+    string fullScreen = @System.Configuration.ConfigurationManager.AppSettings["fullScreen"];
+}
+
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/NewCSS/Layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/all.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css/Stylez")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css/fawesome")
+</head>
+<body class="backgroudImage" style="background-image:@backgroundImage;">
+    <div class="logoImage"><img id="logo" src="@logo" /></div>
+    <div class="fullscreenImage"><img id="fullScreenButton" src="~/Content/Images/MaterialIcons/baseline_fullscreen_white_36dp.png" onclick="toggleFullScreen()" /></div>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Shared")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/Nuget")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Keyboard")
+
+    <script type="text/javascript">
+        if (@fullScreen)
+            $("#fullScreenButton").show();
+
+        function toggleFullScreen() {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+                (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                if (document.documentElement.requestFullScreen) {
+                    document.documentElement.requestFullScreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullScreen) {
+                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                }
+            } else {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                }
+            }
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
